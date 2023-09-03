@@ -44,8 +44,35 @@ app.post("/api/notes", (req, res) => {
 });
 
 // EDIT JOB
+app.patch("/api/notes/:id", (req, res) => {
+  const { title, text } = req.body;
+  if (!title || !text) {
+    return res.status(400).json({ message: "please provide title and a text" });
+  }
+
+  const { id } = req.params;
+  const note = notes.find((note) => note.id === id);
+
+  if (!note) throw new ReferenceError(`no note with this id ${id}`);
+
+  note.title = title;
+  note.text = text;
+
+  res.status(200).json({ message: "note modified", note });
+});
 
 // DELETE JOB
+app.delete("api/notes/:id", (req, res) => {
+  const { id } = req.params;
+
+  const note = notes.find((note) => note.id === id);
+  if (!note) throw new Error(`no job with id ${id}`);
+
+  const newNotes = notes.filter((note) => note.id !== id);
+  notes = newNotes;
+
+  res.status(200).json({ message: "job deleted", notes });
+});
 
 app.listen(PORT, () => {
   console.log(`server running in port ${PORT}`);
