@@ -65,13 +65,15 @@ app.patch("/api/notes/:id", (req, res) => {
 app.delete("api/notes/:id", (req, res) => {
   const { id } = req.params;
 
+  const removedNote = notes.findByIdAndDelete(req.params.id);
+
   const note = notes.find((note) => note.id === id);
-  if (!note) throw new Error(`no job with id ${id}`);
+  if (!removedNote) throw new Error(`no job with id ${id}`);
 
   const newNotes = notes.filter((note) => note.id !== id);
   notes = newNotes;
 
-  res.status(200).json({ message: "job deleted", notes });
+  res.status(200).json({ message: "note deleted", notes });
 });
 
 app.listen(PORT, () => {
