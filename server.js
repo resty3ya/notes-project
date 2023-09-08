@@ -85,6 +85,10 @@ app.delete("/api/notes/:id", (req, res) => {
   res.status(200).json({ message: "note deleted" });
 });
 
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "not found" });
+});
+
 app.listen(PORT, () => {
   console.log(`server running in port ${PORT}`);
 });
