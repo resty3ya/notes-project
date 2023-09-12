@@ -11,60 +11,80 @@ import mongoose from "mongoose";
 
 // GET ALL NOTES
 export const getAllNotes = async (req, res) => {
-  res.status(200).json({ notes });
+  const { text, title } = req.query;
+
+  const notes = await Note.find(req.query);
+
+  res.status(StatusCodes.OK).json({ notes });
 };
 
 // CREATE NOTE
 export const createNote = async (req, res) => {
   const { title, text } = req.body;
 
-  if (!title || !text) {
-    return res.status(400).json({ message: "please provide title and a text" });
-  }
-  const id = nanoid(10);
-  const note = { id, title, text };
-  notes.push(note);
-  res.status(200).json({ note });
+  // if (!title || !text) {
+  //   return res.status(400).json({ message: "please provide title and a text" });
+  // }
+  // const id = nanoid(10);
+  // const note = { id, title, text };
+  // notes.push(note);
+
+  const note = await Note.create({ title, text });
+
+  res.status(StatusCodes.CREATED).json({ message: "notes created", note });
+};
+
+export const getNote = async (req, res) => {
+  const note = await Note.findById(req.params.id);
+
+  res.status(StatusCodes.OK).json({ note });
 };
 
 // UPDATE NOTE
 export const updateNote = async (req, res) => {
-  const { title, text } = req.body;
-  if (!title || !text) {
-    return res.status(400).json({ message: "please provide title and a text" });
-  }
+  const updatedNote = await Note.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  // const { title, text } = req.body;
+  // if (!title || !text) {
+  //   return res.status(400).json({ message: "please provide title and a text" });
+  // }
 
-  const { id } = req.params;
-  const note = notes.find((note) => note.id === id);
+  // const { id } = req.params;
+  // const note = notes.find((note) => note.id === id);
 
-  if (!note) throw new Error(`no note with this id ${id}`);
+  // if (!note) throw new Error(`no note with this id ${id}`);
 
-  note.title = title;
-  note.text = text;
+  // note.title = title;
+  // note.text = text;
 
-  res.status(200).json({ message: "note modified", note });
+  res
+    .status(StatusCodes.OK)
+    .json({ message: "note modified", note: updatedNote });
 };
 
 // DELETE NOTE
 export const deleteNote = async (req, res) => {
-  const { id } = req.params;
+  const removedNote = await Note.findByIdAndDelete(req.params.id);
 
-  try {
-    const note = notes.find((note) => note.id === id);
+  // const { id } = req.params;
 
-    if (!note) {
-      return res
-        .status(404)
-        .json({ message: `no job with this id ${id}`, note });
-    }
+  // try {
+  //   const note = notes.find((note) => note.id === id);
 
-    console.log(note);
-  } catch (error) {
-    console.log(error);
-  }
+  //   if (!note) {
+  //     return res
+  //       .status(404)
+  //       .json({ message: `no job with this id ${id}`, note });
+  //   }
 
-  const newNotes = notes.filter((note) => note.id !== id);
-  notes = newNotes;
+  //   console.log(note);
+  // } catch (error) {
+  //   console.log(error);
+  // }
 
-  res.status(200).json({ message: "note deleted" });
+  // const newNotes = notes.filter((note) => note.id !== id);
+  // notes = newNotes;
+
+  res.status(StatusCodes.OK).json({ message: "note deleted" });
 };

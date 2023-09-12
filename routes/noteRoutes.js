@@ -6,6 +6,7 @@ import {
   createNote,
   updateNote,
   deleteNote,
+  getNote,
 } from "../controllers/noteController.js";
 
 // // Get all notes
@@ -22,6 +23,6 @@ import {
 
 router.route("/").get(getAllNotes).post(createNote);
 
-router.route("/:id").patch(updateNote).delete(deleteNote);
+router.route("/:id").get(getNote).patch(updateNote).delete(deleteNote);
 
 export default router;
