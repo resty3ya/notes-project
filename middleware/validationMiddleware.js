@@ -4,17 +4,17 @@ import {
   NotFoundError,
   UnAuthenticatedError,
   UnAuthorizedError,
-} from "../errors/customErrors";
+} from "../errors/customErrors.js";
 import Note from "../models/Note.js";
 import mongoose from "mongoose";
 
-const validationMiddleware = () => {
+const validationMiddleware = (validateValues) => {
   return [
     validateValues,
     (req, res, next) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
-        const errorMessages = errors.array().map((error) => error.message);
+        const errorMessages = errors.array().map((error) => error.msg);
 
         if (errorMessages[0].startsWith("no note")) {
           throw new NotFoundError(errorMessages);
@@ -43,7 +43,7 @@ export const validateIdParam = validationMiddleware([
 
     const note = await Note.findById(value);
 
-    if (!note) throw new NotFoundError(`no job with id ${value}`);
+    if (!note) throw new NotFoundError(`no note with id ${value}`);
   }),
 ]);
 

@@ -1,6 +1,9 @@
 import { Router } from "express";
 const router = Router();
-
+import {
+  validateNoteInput,
+  validateIdParam,
+} from "../middleware/validationMiddleware.js";
 import {
   getAllNotes,
   createNote,
@@ -21,8 +24,12 @@ import {
 // // Delete Note
 // router.delete("/api/notes/:id", deleteNote);
 
-router.route("/").get(getAllNotes).post(createNote);
+router.route("/").get(getAllNotes).post(validateNoteInput, createNote);
 
-router.route("/:id").get(getNote).patch(updateNote).delete(deleteNote);
+router
+  .route("/:id")
+  .get(validateIdParam, getNote)
+  .patch(validateNoteInput, validateIdParam, updateNote)
+  .delete(deleteNote);
 
 export default router;
