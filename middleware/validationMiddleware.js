@@ -7,6 +7,7 @@ import {
 } from "../errors/customErrors.js";
 import Note from "../models/Note.js";
 import mongoose from "mongoose";
+import { NOTE_STATUS } from "../utils/constant.js";
 
 const validationMiddleware = (validateValues) => {
   return [
@@ -33,6 +34,9 @@ const validationMiddleware = (validateValues) => {
 export const validateNoteInput = validationMiddleware([
   body("title").notEmpty().withMessage("title is required"),
   body("text").notEmpty().withMessage("description is required"),
+  body("noteStatus")
+    .isIn(Object.values(NOTE_STATUS))
+    .withMessage("invalid status value"),
 ]);
 
 // VALIDATE NOTE ID
