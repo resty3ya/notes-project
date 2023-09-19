@@ -3,6 +3,10 @@ import { NOTE_STATUS } from "../utils/constant.js";
 
 const NoteSchema = new mongoose.Schema(
   {
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+    },
     title: String,
     text: String,
     noteStatus: {

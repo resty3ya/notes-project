@@ -1,6 +1,6 @@
 import Note from "../models/Note.js";
 import { StatusCodes } from "http-status-codes";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 // import { nanoid } from "nanoid";
 
@@ -34,6 +34,7 @@ export const createNote = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ message: "notes created", note });
 };
 
+// GET NOTE
 export const getNote = async (req, res) => {
   const note = await Note.findById(req.params.id);
 

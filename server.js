@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3500;
 
 // routes
 import noteRoutes from "./routes/noteRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 // middleware
 app.use(express.json());
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV === "development") {
 // middleware
 
 app.use("/api/notes", noteRoutes);
+app.use("/api/users", userRoutes);
 
 app.use("*", (req, res) => {
   res.status(404).json({ message: "not found" });

@@ -6,6 +6,7 @@ import {
   UnAuthorizedError,
 } from "../errors/customErrors.js";
 import Note from "../models/Note.js";
+import User from "../models/User.js";
 import mongoose from "mongoose";
 import { NOTE_STATUS } from "../utils/constant.js";
 
@@ -30,8 +31,9 @@ const validationMiddleware = (validateValues) => {
   ];
 };
 
-// THIS IS FOR CREATE NOTE
+// THIS IS FOR NOTE INPUT
 export const validateNoteInput = validationMiddleware([
+  body("user").notEmpty().withMessage("user is required"),
   body("title").notEmpty().withMessage("title is required"),
   body("text").notEmpty().withMessage("description is required"),
   body("noteStatus")
@@ -49,6 +51,38 @@ export const validateIdParam = validationMiddleware([
 
     if (!note) throw new NotFoundError(`no note with id ${value}`);
   }),
+]);
+
+// INPUT USER VALIDATION
+export const validateUserInput = validationMiddleware([
+  body("username")
+    .notEmpty()
+    .withMessage("username is required")
+    .custom(async (username) => {
+      const user = await User.findOne({ username });
+      if (user) {
+        throw new BadRequestError("username already exists");
+      }
+    }),
+  body("firstName").notEmpty().withMessage("first name is required"),
+  body("lastName").notEmpty().withMessage("last name is required"),
+]);
+
+// VALIDATE UPDATE USER
+export const validateUpdateUserInput = validationMiddleware([
+  body("username")
+    .notEmpty()
+    .withMessage("username is required")
+    .custom(async (username, { req }) => {
+      const user = await User.findOne({ username });
+      console.log({ req });
+      if (user && user._id.toString() !== req.id) {
+        throw new BadRequestError("username already exists");
+      }
+      console.log(req.id);
+    }),
+  body("firstName").notEmpty().withMessage("first name is required"),
+  body("lastName").notEmpty().withMessage("last name is required"),
 ]);
 
 export default validationMiddleware;
