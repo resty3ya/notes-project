@@ -79,10 +79,8 @@ export const validateUpdateUserInput = validationMiddleware([
       if (user && user._id.toString() !== req.id) {
         throw new BadRequestError("username already exists");
       }
-      console.log(req.id);
+      console.log(req.user.userId);
     }),
   body("firstName").notEmpty().withMessage("first name is required"),
   body("lastName").notEmpty().withMessage("last name is required"),
 ]);
-
-export default validationMiddleware;
