@@ -75,11 +75,9 @@ export const validateUpdateUserInput = validationMiddleware([
     .withMessage("username is required")
     .custom(async (username, { req }) => {
       const user = await User.findOne({ username });
-      console.log({ req });
-      if (user && user._id.toString() !== req.id) {
+      if (user && user._id.toString() !== req.params.id) {
         throw new BadRequestError("username already exists");
       }
-      console.log(req.user.userId);
     }),
   body("firstName").notEmpty().withMessage("first name is required"),
   body("lastName").notEmpty().withMessage("last name is required"),

@@ -15,7 +15,6 @@ export const createUser = async (req, res) => {
   const { username, firstName, lastName } = req.body;
 
   const user = await User.create(req.body);
-  console.log({ req });
   res.status(StatusCodes.CREATED).json({ message: "user created", user });
 };
 
@@ -28,9 +27,9 @@ export const getUser = async (req, res) => {
 
 // UPDATE USER
 export const updateUser = async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate(req.user.userId, req.body);
+  const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body);
 
-  res.status(StatusCodes.OK).json({ message: "user modified", updatedUser });
+  res.status(StatusCodes.OK).json({ message: "user modified" });
 };
 
 // DELETE USER
