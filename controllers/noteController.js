@@ -11,7 +11,7 @@ import { StatusCodes } from "http-status-codes";
 
 // GET ALL NOTES
 export const getAllNotes = async (req, res) => {
-  const { text, title } = req.query;
+  const { user, text, title } = req.query;
 
   const notes = await Note.find(req.query);
 
@@ -20,7 +20,7 @@ export const getAllNotes = async (req, res) => {
 
 // CREATE NOTE
 export const createNote = async (req, res) => {
-  const { title, text } = req.body;
+  const { user, title, text } = req.body;
 
   // if (!title || !text) {
   //   return res.status(400).json({ message: "please provide title and a text" });
@@ -29,7 +29,7 @@ export const createNote = async (req, res) => {
   // const note = { id, title, text };
   // notes.push(note);
 
-  const note = await Note.create({ title, text });
+  const note = await Note.create({ user, title, text });
 
   res.status(StatusCodes.CREATED).json({ message: "notes created", note });
 };
