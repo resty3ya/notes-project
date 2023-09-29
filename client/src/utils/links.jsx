@@ -16,3 +16,5 @@ const links = [
     path: "all-users",
   },
 ];
+
+export default links;
