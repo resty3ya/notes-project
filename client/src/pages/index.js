@@ -2,4 +2,8 @@ export { default as DashboardLayout } from "./DashboardLayout";
 export { default as AddNote } from "./AddNote";
 export { default as EditNote } from "./EditNote";
 export { default as AddUser } from "./AddUser";
+export { default as Error } from "./Error";
 export { default as EditUser } from "./EditUser";
+export { default as HomeLayout } from "./HomeLayout";
+export { default as DeleteNote } from "./DeleteNote";
+export { default as DeleteUser } from "./DeleteUser";
