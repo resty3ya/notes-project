@@ -1,15 +1,17 @@
 import links from "../utils/links";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = () => {
+const NavLinks = ({ text, path }) => {
   return (
     <div className="nav-links">
       {links.map((link) => {
         const { text, path } = link;
 
-        <NavLink to={path} key={text} className="nav-link" end>
-          {text}
-        </NavLink>;
+        return (
+          <NavLink to={path} key={text} className="nav-link" end>
+            {text}
+          </NavLink>
+        );
       })}
     </div>
   );
