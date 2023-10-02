@@ -1,17 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
-  DashboardLayout,
   HomeLayout,
   AddUser,
   AddNote,
   AllNotes,
   AllUsers,
+  EditNote,
+  Error,
 } from "./pages";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -20,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "all-notes",
         element: <AllNotes />,
+      },
+      {
+        path: "edit-note/:id",
+        element: <EditNote />,
       },
       {
         path: "add-user",

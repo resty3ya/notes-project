@@ -8,11 +8,11 @@ const NavLinks = () => {
         const { text, path } = link;
 
         return (
-          <div>
+          <>
             <NavLink to={path} key={text} className="nav-link" end>
               {text}
             </NavLink>
-          </div>
+          </>
         );
       })}
     </div>
