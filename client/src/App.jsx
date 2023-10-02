@@ -1,5 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { DashboardLayout, HomeLayout, AddUser, AddNote } from "./pages";
+import {
+  DashboardLayout,
+  HomeLayout,
+  AddUser,
+  AddNote,
+  AllNotes,
+  AllUsers,
+} from "./pages";
 
 const router = createBrowserRouter([
   {
@@ -11,12 +18,16 @@ const router = createBrowserRouter([
         element: <AddNote />,
       },
       {
-        path: "users",
+        path: "all-notes",
+        element: <AllNotes />,
+      },
+      {
+        path: "add-user",
         element: <AddUser />,
       },
       {
-        path: "dashboard",
-        element: <DashboardLayout />,
+        path: "all-users",
+        element: <AllUsers />,
       },
     ],
   },
