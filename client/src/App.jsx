@@ -9,6 +9,8 @@ import {
   Error,
 } from "./pages";
 
+import { action as addNoteAction } from "./pages/AddNote";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +20,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <AddNote />,
+        action: addNoteAction,
       },
       {
         path: "all-notes",
