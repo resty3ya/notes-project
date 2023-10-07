@@ -10,12 +10,15 @@ import {
 } from "./pages";
 
 import { action as addNoteAction } from "./pages/AddNote";
+import { loader as allNotesLoader } from "./pages/AllNotes";
+import { loader as userNotesHomeLoader } from "./pages/HomeLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
+    loader: userNotesHomeLoader,
     children: [
       {
         index: true,
@@ -25,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: "all-notes",
         element: <AllNotes />,
+        action: allNotesLoader,
       },
       {
         path: "edit-note/:id",

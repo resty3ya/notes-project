@@ -1,4 +1,4 @@
 const AllNotes = () => {
-  return <div>AllNotes</div>;
+  return <></>;
 };
 export default AllNotes;
