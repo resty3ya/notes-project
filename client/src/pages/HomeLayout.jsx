@@ -24,7 +24,7 @@ const HomeLayout = () => {
         <main className="dashboard">
           <Navbar />
           <div className="dashboard-page">
-            <Outlet context={{ user }} />
+            <Outlet />
           </div>
         </main>
       </Wrapper>
