@@ -9,26 +9,25 @@ import {
   Error,
 } from "./pages";
 
-import { action as addNoteAction } from "./pages/AddNote";
-import { loader as allNotesLoader } from "./pages/AllNotes";
-import { loader as userNotesHomeLoader } from "./pages/HomeLayout";
+// import { action as addNoteAction } from "./pages/AddNote";
+// import { loader as allNotesLoader } from "./pages/AllNotes";
+import { loader as allUsersLoader } from "./pages/AllUsers";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
-    loader: userNotesHomeLoader,
     children: [
       {
         index: true,
         element: <AddNote />,
-        action: addNoteAction,
+        // action: addNoteAction,
       },
       {
         path: "all-notes",
         element: <AllNotes />,
-        action: allNotesLoader,
+        // action: allNotesLoader,
       },
       {
         path: "edit-note/:id",
@@ -41,6 +40,7 @@ const router = createBrowserRouter([
       {
         path: "all-users",
         element: <AllUsers />,
+        loader: allUsersLoader,
       },
     ],
   },

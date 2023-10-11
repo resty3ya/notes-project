@@ -28,8 +28,8 @@ if (process.env.NODE_ENV === "development") {
 // });
 // middleware
 
-app.use("/api/notes", noteRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/v1/notes", noteRoutes);
+app.use("/api/v1/users", userRoutes);
 
 app.use("*", (req, res) => {
   res.status(404).json({ message: "not found" });
