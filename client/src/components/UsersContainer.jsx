@@ -8,14 +8,15 @@ const UsersContainer = () => {
 
   return (
     <div>
+      <label>username</label>
       {user.map((user) => {
         return (
-          <div key={user._id}>
-            <label>username</label>
-            <p>{user.username}</p>
-            <p>{user.firstName}</p>
-            <p>{user.lastName}</p>
-          </div>
+          <>
+            <div key={user._id}>
+              <p>{user.username}</p>,<p>{user.firstName}</p>,
+              <p>{user.lastName}</p>
+            </div>
+          </>
         );
       })}
     </div>
