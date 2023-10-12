@@ -1,7 +1,7 @@
 import links from "../utils/links";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = () => {
+const NavLinks = ({ text, path }) => {
   return (
     <div className="nav-links">
       {links.map((link) => {
