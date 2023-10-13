@@ -1,4 +1,6 @@
 import { useAllUsersContext } from "../pages/AllUsers";
+import User from "../components/Users";
+import Wrapper from "../assets/wrappers/JobsContainer";
 
 const UsersContainer = () => {
   const { data } = useAllUsersContext();
@@ -7,19 +9,13 @@ const UsersContainer = () => {
   const { user } = data;
 
   return (
-    <div>
-      <label>username</label>
-      {user.map((user) => {
-        return (
-          <>
-            <div key={user._id}>
-              <p>{user.username}</p>,<p>{user.firstName}</p>,
-              <p>{user.lastName}</p>
-            </div>
-          </>
-        );
-      })}
-    </div>
+    <Wrapper>
+      <div className="jobs">
+        {user.map((user) => {
+          return <User key={user._id} {...user} />;
+        })}
+      </div>
+    </Wrapper>
   );
 };
 export default UsersContainer;
