@@ -19,7 +19,7 @@ export const action = async ({ request }) => {
 };
 
 const AddUser = () => {
-  // const { user } = useAllUsersContext();
+  const { user } = useAllUsersContext();
 
   return (
     <Wrapper>
@@ -27,7 +27,11 @@ const AddUser = () => {
         <FormRow type="username" name="username" />
         <FormRow type="text" name="firstName" />
         <FormRow type="text" name="lastName" />
-        <FormRow type="checkbox" name="active" />
+        <FormRow
+          type="checkbox"
+          name="active"
+          checked={user.active ? true : false}
+        />
       </Form>
     </Wrapper>
   );
