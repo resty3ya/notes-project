@@ -1,6 +1,6 @@
 import Wrapper from "../assets/wrappers/Job";
 
-const User = ({ _id, username, firstName, lastName }) => {
+const User = ({ username, firstName, lastName, active }) => {
   return (
     <Wrapper>
       <header>
@@ -12,6 +12,13 @@ const User = ({ _id, username, firstName, lastName }) => {
         <p>
           <emp>Firstname:</emp>
           {firstName} <emp>Lastname:</emp> {lastName}
+          <label>Active</label>
+          <input
+            type="checkbox"
+            name="active"
+            id="active"
+            checked={active ? true : false}
+          />
         </p>
       </div>
     </Wrapper>
