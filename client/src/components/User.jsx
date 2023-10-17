@@ -1,6 +1,8 @@
 import Wrapper from "../assets/wrappers/Job";
+import { FormRow } from "./index";
+import { Link } from "react-router-dom";
 
-const User = ({ username, firstName, lastName, active }) => {
+const User = ({ _id, username, firstName, lastName, active }) => {
   return (
     <Wrapper>
       <header>
@@ -10,16 +12,22 @@ const User = ({ username, firstName, lastName, active }) => {
       </header>
       <div className="content">
         <p>
-          <emp>Firstname:</emp>
-          {firstName} <emp>Lastname:</emp> {lastName}
-          <label>Active</label>
-          <input
+          Firstname:
+          {firstName}
+          <br />
+          Lastname:
+          {lastName}
+          <br />
+          <FormRow
             type="checkbox"
             name="active"
             id="active"
             checked={active ? true : false}
           />
         </p>
+        <Link to={`../edit-user/${_id}`} className="btn edit-btn">
+          Edit
+        </Link>
       </div>
     </Wrapper>
   );
