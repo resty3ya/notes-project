@@ -10,9 +10,7 @@ const FormRow = ({ type, name, labelText, onChange, checked }) => {
         id={name}
         className="form-input"
         onChange={onChange}
-        required
         checked={checked}
-        // need to work with the checked readOnly later
       />
     </div>
   );

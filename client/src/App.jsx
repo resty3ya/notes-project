@@ -15,6 +15,7 @@ import {
 import { loader as allUsersLoader } from "./pages/AllUsers";
 import { action as AddUserAction } from "./pages/AddUser";
 import { loader as EditUserLoader } from "./pages/EditUser";
+import { action as EditUserAction } from "./pages/EditUser";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
         path: "edit-user/:id",
         element: <EditUser />,
         loader: EditUserLoader,
+        action: EditUserAction,
       },
       {
         path: "all-users",
