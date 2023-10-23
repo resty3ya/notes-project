@@ -8,7 +8,6 @@ import { useState } from "react";
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/users/${params.id}`);
-    console.log(data);
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.msg);
@@ -19,7 +18,7 @@ export const loader = async ({ params }) => {
 export const action = async ({ request, params }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data, params);
+  console.log("this is from form ", formData, data, params);
   try {
     await customFetch.patch(`/users/${params.id}`, data);
     toast.success("User successfully updated");
@@ -36,7 +35,7 @@ const EditUser = () => {
 
   const onActiveChanged = () => setActive((prev) => !prev);
 
-  console.log({ onActiveChanged });
+  console.log(active);
   return (
     <Wrapper>
       <Form method="post" className="form">
@@ -45,11 +44,13 @@ const EditUser = () => {
           <FormRow type="text" name="username" defaultValue={user.username} />
           <FormRow type="text" name="firstName" defaultValue={user.firstName} />
           <FormRow type="text" name="lastName" defaultValue={user.lastName} />
-          <input
+          {/* Pag Checkbox pala laging magkapartner ang name & value or defaultValue attribute to have the value ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value  */}
+          <FormRow
             type="checkbox"
-            name={user.active}
-            checked={user.active}
+            name="active"
+            id="active"
             onChange={onActiveChanged}
+            defaultValue={active}
           />
         </div>
         <button type="submit">SUBMIT</button>

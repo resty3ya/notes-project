@@ -7,24 +7,17 @@ const User = ({ _id, username, firstName, lastName, active }) => {
     <Wrapper>
       <header>
         <div className="info">
-          <h5>{username}</h5>
+          <label>Username</label>
+          <h3>{username}</h3>
         </div>
       </header>
       <div className="content">
-        <p>
-          Firstname:
-          {firstName}
-          <br />
-          Lastname:
-          {lastName}
-          <br />
-          <FormRow
-            type="checkbox"
-            name="active"
-            id="active"
-            checked={active ? true : false}
-          />
-        </p>
+        <label>First Name:</label>
+        <h5>{firstName}</h5>
+        <label>Last Name:</label>
+        <h5>{lastName}</h5>
+        <label>Active</label>
+        <input type="checkbox" checked={active} disabled />
         <Link to={`../edit-user/${_id}`} className="btn edit-btn">
           Edit
         </Link>

@@ -1,18 +1,13 @@
 import { useAllUsersContext } from "../pages/AllUsers";
-<<<<<<< HEAD
-import User from "../components/Users";
-import Wrapper from "../assets/wrappers/JobsContainer";
-=======
-import Wrapper from "../assets/wrappers/JobsContainer";
 import User from "./User";
->>>>>>> refs/remotes/origin/master
+import Wrapper from "../assets/wrappers/JobsContainer";
 
 const UsersContainer = () => {
   const { data } = useAllUsersContext();
 
   //destructure
   const { user } = data;
-
+  console.log({ user });
   return (
     <Wrapper>
       <div className="jobs">
