@@ -1,6 +1,11 @@
 import { useAllUsersContext } from "../pages/AllUsers";
+<<<<<<< HEAD
 import User from "../components/Users";
 import Wrapper from "../assets/wrappers/JobsContainer";
+=======
+import Wrapper from "../assets/wrappers/JobsContainer";
+import User from "./User";
+>>>>>>> refs/remotes/origin/master
 
 const UsersContainer = () => {
   const { data } = useAllUsersContext();

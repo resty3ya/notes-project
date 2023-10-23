@@ -6,12 +6,16 @@ import {
   AllNotes,
   AllUsers,
   EditNote,
+  EditUser,
   Error,
 } from "./pages";
 
 // import { action as addNoteAction } from "./pages/AddNote";
 // import { loader as allNotesLoader } from "./pages/AllNotes";
 import { loader as allUsersLoader } from "./pages/AllUsers";
+import { action as AddUserAction } from "./pages/AddUser";
+import { loader as EditUserLoader } from "./pages/EditUser";
+import { action as EditUserAction } from "./pages/EditUser";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +40,13 @@ const router = createBrowserRouter([
       {
         path: "add-user",
         element: <AddUser />,
+        action: AddUserAction,
+      },
+      {
+        path: "edit-user/:id",
+        element: <EditUser />,
+        loader: EditUserLoader,
+        action: EditUserAction,
       },
       {
         path: "all-users",
