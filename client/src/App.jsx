@@ -7,6 +7,7 @@ import {
   AllUsers,
   EditNote,
   EditUser,
+  DeleteUser,
   Error,
 } from "./pages";
 
@@ -16,6 +17,7 @@ import { loader as allUsersLoader } from "./pages/AllUsers";
 import { action as AddUserAction } from "./pages/AddUser";
 import { loader as EditUserLoader } from "./pages/EditUser";
 import { action as EditUserAction } from "./pages/EditUser";
+import { action as DeleteUserAction } from "./pages/DeleteUser";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,11 @@ const router = createBrowserRouter([
         element: <EditUser />,
         loader: EditUserLoader,
         action: EditUserAction,
+      },
+      {
+        path: "delete-user/:id",
+        element: <DeleteUser />,
+        action: DeleteUserAction,
       },
       {
         path: "all-users",

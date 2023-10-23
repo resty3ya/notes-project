@@ -48,7 +48,6 @@ const EditUser = () => {
           <FormRow
             type="checkbox"
             name="active"
-            id="active"
             onChange={onActiveChanged}
             defaultValue={active}
           />

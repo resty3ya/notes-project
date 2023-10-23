@@ -1,6 +1,6 @@
 import Wrapper from "../assets/wrappers/Job";
 import { FormRow } from "./index";
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 
 const User = ({ _id, username, firstName, lastName, active }) => {
   return (
@@ -21,6 +21,11 @@ const User = ({ _id, username, firstName, lastName, active }) => {
         <Link to={`../edit-user/${_id}`} className="btn edit-btn">
           Edit
         </Link>
+        <Form method="post" action={`../delete-user/${_id}`}>
+          <button type="submit" className="btn delete-btn">
+            Delete
+          </button>
+        </Form>
       </div>
     </Wrapper>
   );
