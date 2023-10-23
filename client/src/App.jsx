@@ -12,12 +12,12 @@ import {
 } from "./pages";
 
 // import { action as addNoteAction } from "./pages/AddNote";
-// import { loader as allNotesLoader } from "./pages/AllNotes";
-import { loader as allUsersLoader } from "./pages/AllUsers";
-import { action as AddUserAction } from "./pages/AddUser";
-import { loader as EditUserLoader } from "./pages/EditUser";
-import { action as EditUserAction } from "./pages/EditUser";
-import { action as DeleteUserAction } from "./pages/DeleteUser";
+import { loader as allNotesLoader } from "./pages/Note/AllNotes";
+import { loader as allUsersLoader } from "./pages/User/AllUsers";
+import { action as AddUserAction } from "./pages/User/AddUser";
+import { loader as EditUserLoader } from "./pages/User/EditUser";
+import { action as EditUserAction } from "./pages/User/EditUser";
+import { action as DeleteUserAction } from "./pages/User/DeleteUser";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       {
         path: "all-notes",
         element: <AllNotes />,
-        // action: allNotesLoader,
+        loader: allNotesLoader,
       },
       {
         path: "edit-note/:id",

@@ -1,4 +1,4 @@
-import { useAllUsersContext } from "../pages/AllUsers";
+import { useAllUsersContext } from "../pages/User/AllUsers";
 import User from "./User";
 import Wrapper from "../assets/wrappers/JobsContainer";
 

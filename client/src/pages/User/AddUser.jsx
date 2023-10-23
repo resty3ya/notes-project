@@ -1,8 +1,8 @@
-import { FormRow } from "../components";
-import Wrapper from "../assets/wrappers/DashboardFormPage";
+import { FormRow } from "../../components";
+import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { Form, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
-import customFetch from "../utils/customFetch";
+import customFetch from "../../utils/customFetch";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -10,7 +10,7 @@ export const action = async ({ request }) => {
   try {
     await customFetch.post("/users", data);
     console.log(data);
-    toast.success("added user successfull");
+    toast.success("added user successfully");
     return redirect("/all-users");
   } catch (error) {
     toast.error(error?.response?.data?.msg);

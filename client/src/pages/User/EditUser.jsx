@@ -1,7 +1,7 @@
-import customFetch from "../utils/customFetch";
-import { FormRow } from "../components";
+import customFetch from "../../utils/customFetch";
+import { FormRow } from "../../components";
 import { useLoaderData, Form, redirect } from "react-router-dom";
-import Wrapper from "../assets/wrappers/DashboardFormPage";
+import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
 import { useState } from "react";
 

@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { UsersContainer } from "../components";
-import customFetch from "../utils/customFetch";
+import { UsersContainer } from "../../components";
+import customFetch from "../../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { useContext, createContext } from "react";
 
