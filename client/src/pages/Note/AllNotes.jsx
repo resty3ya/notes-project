@@ -1,18 +1,18 @@
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
-import { useLoaderData } from "react-router-dom";
 import { useContext, createContext } from "react";
 import NotesContainer from "../../components/NotesContainer";
+import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
   try {
-    const [data1, data2] = await Promise.all([
+    const [notes, user] = await Promise.all([
       customFetch.get("/notes"),
       customFetch.get("/users"),
     ]);
     // const { userData } = await customFetch.get("/users");
     // console.log(data1.data, data2.data);
-    return { data1, data2 };
+    return { notes, user };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -21,11 +21,15 @@ export const loader = async () => {
 
 const AllNotesContext = createContext();
 const AllNotes = () => {
-  const { data1 } = useLoaderData();
-  const { data2 } = useLoaderData();
+  const { notes, user } = useLoaderData();
+
+  //destructure
+  //yung DATA na value ay yung nasa loob ng Object na finetch mo from loader
+  const { data } = notes;
+  const { data: userInfo } = user;
 
   return (
-    <AllNotesContext.Provider value={{ data1, data2 }}>
+    <AllNotesContext.Provider value={{ data, userInfo }}>
       <NotesContainer />
     </AllNotesContext.Provider>
   );

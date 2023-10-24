@@ -1,17 +1,16 @@
-import { useAllNotesContext } from "../pages/Note/AllNotes";
 import Notes from "./Notes";
+import { useAllNotesContext } from "../pages/Note/AllNotes";
 import Wrapper from "../assets/wrappers/JobsContainer";
 
 const NotesContainer = () => {
-  const { data1 } = useAllNotesContext();
-  const { data2 } = useAllNotesContext();
+  const { data, userInfo } = useAllNotesContext();
 
-  console.log(data1.data);
-  console.log(data2.data);
+  console.log(data);
+  console.log(userInfo);
 
   return (
     <Wrapper>
-      <div className="jobs">{console.log(data1.data._id)}</div>
+      <div className="jobs">{}</div>
     </Wrapper>
   );
 };
