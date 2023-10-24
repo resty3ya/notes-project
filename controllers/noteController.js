@@ -13,6 +13,7 @@ import { StatusCodes } from "http-status-codes";
 export const getAllNotes = async (req, res) => {
   const { user, text, title } = req.query;
 
+  //POPULATE IS USED TO GET THE USER DATA TOGETHER WITH NOTES FROM THE USER MODEL EVEN IN THE CLIENT
   const notes = await Note.find(req.query).populate("user");
 
   res.status(StatusCodes.OK).json({ notes });

@@ -18,6 +18,8 @@ import { action as AddUserAction } from "./pages/User/AddUser";
 import { loader as EditUserLoader } from "./pages/User/EditUser";
 import { action as EditUserAction } from "./pages/User/EditUser";
 import { action as DeleteUserAction } from "./pages/User/DeleteUser";
+import { action as addNoteAction } from "./pages/Note/AddNote";
+import { loader as addNoteLoader } from "./pages/Note/AddNote";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +30,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <AddNote />,
-        // action: addNoteAction,
+        action: addNoteAction,
+        loader: addNoteLoader,
       },
       {
         path: "all-notes",
