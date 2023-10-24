@@ -5,12 +5,17 @@ import Wrapper from "../assets/wrappers/JobsContainer";
 const NotesContainer = () => {
   const { data, userInfo } = useAllNotesContext();
 
-  console.log(data);
-  console.log(userInfo);
+  //destructure again
+  const { user } = userInfo;
+  const { notes } = data;
 
   return (
     <Wrapper>
-      <div className="jobs">{}</div>
+      <div className="jobs">
+        {notes.map((note) => {
+          return <Notes key={note._id} {...note} />;
+        })}
+      </div>
     </Wrapper>
   );
 };

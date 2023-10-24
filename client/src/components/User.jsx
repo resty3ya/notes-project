@@ -1,5 +1,4 @@
 import Wrapper from "../assets/wrappers/Job";
-import { FormRow } from "./index";
 import { Link, Form } from "react-router-dom";
 
 const User = ({ _id, username, firstName, lastName, active }) => {

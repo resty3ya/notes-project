@@ -7,7 +7,6 @@ const UsersContainer = () => {
 
   //destructure
   const { user } = data;
-  console.log({ user });
   return (
     <Wrapper>
       <div className="jobs">

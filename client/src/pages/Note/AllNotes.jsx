@@ -23,6 +23,11 @@ const AllNotesContext = createContext();
 const AllNotes = () => {
   const { notes, user } = useLoaderData();
 
+  const getUserName = (notes) => {
+    const author = user.find((user) => user._id === notes.user);
+    return author ? user.username : "unknown";
+  };
+
   //destructure
   //yung DATA na value ay yung nasa loob ng Object na finetch mo from loader
   const { data } = notes;
