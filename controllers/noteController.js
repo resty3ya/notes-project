@@ -13,7 +13,7 @@ import { StatusCodes } from "http-status-codes";
 export const getAllNotes = async (req, res) => {
   const { user, text, title } = req.query;
 
-  const notes = await Note.find(req.query);
+  const notes = await Note.find(req.query).populate("user");
 
   res.status(StatusCodes.OK).json({ notes });
 };

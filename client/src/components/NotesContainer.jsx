@@ -3,10 +3,9 @@ import { useAllNotesContext } from "../pages/Note/AllNotes";
 import Wrapper from "../assets/wrappers/JobsContainer";
 
 const NotesContainer = () => {
-  const { data, userInfo } = useAllNotesContext();
+  const { data } = useAllNotesContext();
 
-  //destructure again
-  const { user } = userInfo;
+  //destructure
   const { notes } = data;
 
   return (

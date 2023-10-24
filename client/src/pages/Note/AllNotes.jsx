@@ -6,13 +6,11 @@ import { useLoaderData } from "react-router-dom";
 
 export const loader = async () => {
   try {
-    const [notes, user] = await Promise.all([
-      customFetch.get("/notes"),
-      customFetch.get("/users"),
-    ]);
+    const { data } = await customFetch.get("/notes");
+
     // const { userData } = await customFetch.get("/users");
     // console.log(data1.data, data2.data);
-    return { notes, user };
+    return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -21,20 +19,13 @@ export const loader = async () => {
 
 const AllNotesContext = createContext();
 const AllNotes = () => {
-  const { notes, user } = useLoaderData();
-
-  const getUserName = (notes) => {
-    const author = user.find((user) => user._id === notes.user);
-    return author ? user.username : "unknown";
-  };
+  const { data } = useLoaderData();
 
   //destructure
-  //yung DATA na value ay yung nasa loob ng Object na finetch mo from loader
-  const { data } = notes;
-  const { data: userInfo } = user;
+  //
 
   return (
-    <AllNotesContext.Provider value={{ data, userInfo }}>
+    <AllNotesContext.Provider value={{ data }}>
       <NotesContainer />
     </AllNotesContext.Provider>
   );
