@@ -1,7 +1,7 @@
 import Wrapper from "../assets/wrappers/Job";
 import { Link, Form } from "react-router-dom";
 
-const Notes = ({ user, title, text }) => {
+const Notes = ({ _id, user, title, text }) => {
   return (
     <Wrapper>
       <header>
@@ -15,6 +15,14 @@ const Notes = ({ user, title, text }) => {
         <h4>{user.username}</h4>
         <label>text:</label>
         <h3>{text}</h3>
+        <Link to={`../edit-note/${_id}`} className="btn edit-btn">
+          Edit
+        </Link>
+        <Form method="post" action={`../delete-note/${_id}`}>
+          <button type="submit" className="btn delete-btn">
+            Delete
+          </button>
+        </Form>
       </div>
     </Wrapper>
   );

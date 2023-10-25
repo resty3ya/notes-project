@@ -29,6 +29,9 @@ export const loader = async () => {
   }
 };
 
+//NOTE: USER WITH INACTIVE STATUS MUST NOT SHOW IN SELECT USER
+// NOTE: REMOVE DELETE FUNCTION TO THE USERS SO THAT THE NOTE WILL NOT BE DISTORTED
+
 const AddNote = () => {
   const { data } = useLoaderData();
 

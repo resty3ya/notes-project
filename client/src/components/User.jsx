@@ -20,11 +20,11 @@ const User = ({ _id, username, firstName, lastName, active }) => {
         <Link to={`../edit-user/${_id}`} className="btn edit-btn">
           Edit
         </Link>
-        <Form method="post" action={`../delete-user/${_id}`}>
-          <button type="submit" className="btn delete-btn">
+        {/* <Form method="post" action={`../delete-user/${_id}`}>
+          <button type="submit" className="btn delete-btn" disabled>
             Delete
           </button>
-        </Form>
+        </Form> */}
       </div>
     </Wrapper>
   );
