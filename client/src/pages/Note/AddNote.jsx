@@ -37,18 +37,23 @@ const AddNote = () => {
 
   const { user } = data;
 
+  console.log(user);
+
   return (
     <Wrapper>
       <Form method="post" className="form">
         <label htmlFor="user">Select User:</label>
         <select id="user" name="user" className="btn btn-block">
-          {user.map((user) => {
-            return (
-              <option key={user._id} value={user._id}>
-                {user.username}
-              </option>
-            );
-          })}
+          {/* ADDING OF FILTER TO REMOVE THE INACTIVE STATUS USER */}
+          {user
+            .filter((user) => user.active === true)
+            .map((user) => {
+              return (
+                <option key={user._id} value={user._id}>
+                  {user.username}
+                </option>
+              );
+            })}
         </select>
         <FormRow type="text" name="title" />
         <FormRow type="text" name="text" />
