@@ -37,8 +37,6 @@ const AddNote = () => {
 
   const { user } = data;
 
-  console.log(user);
-
   return (
     <Wrapper>
       <Form method="post" className="form">
