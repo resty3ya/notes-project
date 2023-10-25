@@ -1,4 +1,3 @@
-export { default as DashboardLayout } from "./DashboardLayout";
 export { default as AddNote } from "./Note/AddNote";
 export { default as AllNotes } from "./Note/AllNotes";
 export { default as EditNote } from "./Note/EditNote";
