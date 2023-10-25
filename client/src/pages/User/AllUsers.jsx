@@ -19,8 +19,11 @@ const AllUsersContext = createContext();
 const AllUsers = () => {
   const { data } = useLoaderData();
 
+  // destructure
+  const { user } = data;
+
   return (
-    <AllUsersContext.Provider value={{ data }}>
+    <AllUsersContext.Provider value={{ user }}>
       <UsersContainer />
     </AllUsersContext.Provider>
   );

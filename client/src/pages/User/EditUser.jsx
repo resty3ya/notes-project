@@ -8,7 +8,8 @@ import { useState } from "react";
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/users/${params.id}`);
-    return data;
+    console.log(data);
+    return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return redirect("/all-users");
@@ -30,12 +31,15 @@ export const action = async ({ request, params }) => {
 };
 
 const EditUser = () => {
-  const { user } = useLoaderData();
-  const [active, setActive] = useState(user.active);
+  const { data } = useLoaderData();
 
-  const onActiveChanged = () => setActive((prev) => !prev);
+  //destructure
+  const { user } = data;
 
-  console.log(active);
+  const [activeUser, setActiveUser] = useState(user.active);
+
+  const onActiveChanged = () => setActiveUser((prev) => !prev);
+
   return (
     <Wrapper>
       <Form method="post" className="form">
@@ -45,11 +49,13 @@ const EditUser = () => {
           <FormRow type="text" name="firstName" defaultValue={user.firstName} />
           <FormRow type="text" name="lastName" defaultValue={user.lastName} />
           {/* Pag Checkbox pala laging magkapartner ang name & value or defaultValue attribute to have the value ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value  */}
-          <FormRow
+          <input
             type="checkbox"
             name="active"
+            id="active"
+            // defaultValue={activeUser}
+            // defaultChecked={activeUser}
             onChange={onActiveChanged}
-            defaultValue={active}
           />
         </div>
         <button type="submit">SUBMIT</button>

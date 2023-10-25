@@ -3,10 +3,8 @@ import User from "./User";
 import Wrapper from "../assets/wrappers/JobsContainer";
 
 const UsersContainer = () => {
-  const { data } = useAllUsersContext();
+  const { user } = useAllUsersContext();
 
-  //destructure
-  const { user } = data;
   return (
     <Wrapper>
       <div className="jobs">
