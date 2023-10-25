@@ -4,6 +4,7 @@ import { useLoaderData, Form, redirect } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
 import { NOTE_STATUS } from "../../../../utils/constant";
+import { useState } from "react";
 
 export const loader = async ({ params }) => {
   try {
@@ -13,6 +14,11 @@ export const loader = async ({ params }) => {
       customFetch.get(`/users`),
     ]);
     return { user, notes };
+
+    // const { data } = await customFetch.get(`/notes/${params.id}`);
+
+    // // console.log({ data });
+    // return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return redirect("/all-notes");
@@ -43,10 +49,16 @@ const EditNote = () => {
   const usersDataForMapping = usersData.user;
   const notesDataForMapping = notesData.note;
 
+  const [selectNotesUser, setSelectNotesUser] = useState(
+    notesDataForMapping.user
+  );
+
   // const defaultUserValue  =>
   //   usersDataForMapping._id === notesDataForMapping.user;
 
   // console.log(defaultUserValue);
+
+  const onUserChanged = () => setSelectNotesUser((prev) => !prev);
 
   const options = usersDataForMapping.map((user) => {
     return (
@@ -59,8 +71,23 @@ const EditNote = () => {
   return (
     <Wrapper>
       <Form method="post" className="form">
-        <label htmlFor="user">Select User:</label>
-        <select id="user" name="user" className="btn btn-block">
+        {/* <label htmlFor="user">Select User:</label>
+        <select
+          id="user"
+          name="user"
+          className="btn btn-block"
+          value={selectNotesUser}
+          defaultValue={notesDataForMapping.user}
+          onChange={(e) => setSelectNotesUser(e.target.value)}
+        >
+          {options}
+        </select> */}
+        <select
+          name="user"
+          className="form-select"
+          defaultValue={selectNotesUser}
+          onChange={onUserChanged}
+        >
           {options}
         </select>
         <FormRow

@@ -37,8 +37,8 @@ export const createNote = async (req, res) => {
 
 // GET NOTE
 export const getNote = async (req, res) => {
+  // ADDING POPULATE GIVE THE VALUE WHICH IS THE USERNAME OF USER UNDER NOTES
   const note = await Note.findById(req.params.id);
-
   res.status(StatusCodes.OK).json({ note });
 };
 
