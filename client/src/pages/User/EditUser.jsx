@@ -1,14 +1,14 @@
 import customFetch from "../../utils/customFetch";
-import { FormRow } from "../../components";
+import { FormRow, FormRowSelect } from "../../components";
 import { useLoaderData, Form, redirect } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const loader = async ({ params }) => {
   try {
     const { data } = await customFetch.get(`/users/${params.id}`);
-    console.log(data);
+    console.log("THIS IS FROM LOADER", data);
     return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
@@ -36,9 +36,11 @@ const EditUser = () => {
   //destructure
   const { user } = data;
 
-  const [activeUser, setActiveUser] = useState(user.active);
+  const [active, setActive] = useState(user.active);
 
-  const onActiveChanged = () => setActiveUser((prev) => !prev);
+  const onActiveChanged = () => {
+    setActive((current) => !current);
+  };
 
   return (
     <Wrapper>
@@ -49,14 +51,17 @@ const EditUser = () => {
           <FormRow type="text" name="firstName" defaultValue={user.firstName} />
           <FormRow type="text" name="lastName" defaultValue={user.lastName} />
           {/* Pag Checkbox pala laging magkapartner ang name & value or defaultValue attribute to have the value ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value  */}
-          <input
-            type="checkbox"
-            name="active"
-            id="active"
-            // defaultValue={activeUser}
-            // defaultChecked={activeUser}
-            onChange={onActiveChanged}
-          />
+
+          <label htmlFor="active">
+            Active:
+            <input
+              type="checkbox"
+              name="active"
+              id="active"
+              checked={active}
+              onChange={onActiveChanged}
+            />
+          </label>
         </div>
         <button type="submit">SUBMIT</button>
       </Form>
