@@ -1,5 +1,5 @@
 import customFetch from "../../utils/customFetch";
-import { FormRow, FormRowSelect } from "../../components";
+import { FormRow, FormRowSelect, FormRowCheckbox } from "../../components";
 import { useLoaderData, Form, redirect } from "react-router-dom";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { toast } from "react-toastify";
@@ -36,12 +36,6 @@ const EditUser = () => {
   //destructure
   const { user } = data;
 
-  const [active, setActive] = useState(user.active);
-
-  const onActiveChanged = () => {
-    setActive((current) => !current);
-  };
-
   return (
     <Wrapper>
       <Form method="post" className="form">
@@ -51,17 +45,7 @@ const EditUser = () => {
           <FormRow type="text" name="firstName" defaultValue={user.firstName} />
           <FormRow type="text" name="lastName" defaultValue={user.lastName} />
           {/* Pag Checkbox pala laging magkapartner ang name & value or defaultValue attribute to have the value ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value  */}
-
-          <label htmlFor="active">
-            Active:
-            <input
-              type="checkbox"
-              name="active"
-              id="active"
-              checked={active}
-              onChange={onActiveChanged}
-            />
-          </label>
+          <FormRowCheckbox user={user} />
         </div>
         <button type="submit">SUBMIT</button>
       </Form>

@@ -1,7 +1,11 @@
 import Wrapper from "../assets/wrappers/Job";
-import { Link, Form } from "react-router-dom";
+import { useNavigate, Form } from "react-router-dom";
 
 const User = ({ _id, username, firstName, lastName, active }) => {
+  const navigate = useNavigate();
+
+  const handleEdit = () => navigate(`../edit-user/${_id}`);
+
   return (
     <Wrapper>
       <header>
@@ -17,9 +21,9 @@ const User = ({ _id, username, firstName, lastName, active }) => {
         <h5>{lastName}</h5>
         <label>Active</label>
         <input type="checkbox" checked={active} disabled />
-        <Link to={`../edit-user/${_id}`} className="btn edit-btn">
+        <button onClick={handleEdit} className="btn edit-btn">
           Edit
-        </Link>
+        </button>
         {/* <Form method="post" action={`../delete-user/${_id}`}>
           <button type="submit" className="btn delete-btn" disabled>
             Delete
