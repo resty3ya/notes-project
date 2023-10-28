@@ -1,7 +1,7 @@
 import links from "../utils/links";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = ({ text, path }) => {
+const NavLinks = () => {
   return (
     <div className="nav-links">
       {links.map((link) => {
@@ -9,7 +9,7 @@ const NavLinks = ({ text, path }) => {
 
         return (
           <>
-            <NavLink to={path} key={text} className="nav-link" end>
+            <NavLink to={path} key={text} end>
               {text}
             </NavLink>
           </>

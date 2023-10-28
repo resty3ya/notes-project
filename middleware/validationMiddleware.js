@@ -58,6 +58,7 @@ export const validateUserInput = validationMiddleware([
   body("username")
     .notEmpty()
     .withMessage("username is required")
+    .toLowerCase()
     .custom(async (username) => {
       const user = await User.findOne({ username });
       if (user) {

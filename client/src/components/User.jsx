@@ -19,8 +19,9 @@ const User = ({ _id, username, firstName, lastName, active }) => {
         <h5>{firstName}</h5>
         <label>Last Name:</label>
         <h5>{lastName}</h5>
-        <label>Active</label>
+        <label>Status:</label>
         <input type="checkbox" checked={active} disabled />
+        {active === true ? "Active" : "Inactive"}
         <button onClick={handleEdit} className="btn edit-btn">
           Edit
         </button>

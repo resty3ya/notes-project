@@ -31,7 +31,7 @@ export const action = async ({ request, params }) => {
   try {
     await customFetch.patch(`/notes/${params.id}`, data);
     toast.success("Notes successfully updated!");
-    return redirect("/all-notes");
+    return redirect("/");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;

@@ -5,15 +5,16 @@ import { NOTE_STATUS } from "../../../../utils/constant";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useAllNotesContext } from "./AllNotes";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
+
   try {
     await customFetch.post("/notes", data);
     toast.success("added note successfully");
-    return redirect("/all-notes");
+    return redirect("/");
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -23,6 +24,7 @@ export const action = async ({ request }) => {
 export const loader = async () => {
   try {
     const { data } = await customFetch.get("/users");
+    console.log({ data });
     return { data };
   } catch (error) {
     return error;

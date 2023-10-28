@@ -1,11 +1,11 @@
 const links = [
   {
-    text: "add note",
+    text: "all notes",
     path: ".",
   },
   {
-    text: "all notes",
-    path: "all-notes",
+    text: "add note",
+    path: "add-note",
   },
   {
     text: "add user",

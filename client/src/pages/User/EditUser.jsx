@@ -45,7 +45,8 @@ const EditUser = () => {
           <FormRow type="text" name="firstName" defaultValue={user.firstName} />
           <FormRow type="text" name="lastName" defaultValue={user.lastName} />
           {/* Pag Checkbox pala laging magkapartner ang name & value or defaultValue attribute to have the value ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#value  */}
-          <FormRowCheckbox user={user} />
+          <FormRowCheckbox user={user} labelText="Status:" />
+          <p>{!user.active ? "Active" : "Inactive"}</p>
         </div>
         <button type="submit">SUBMIT</button>
       </Form>

@@ -8,14 +8,21 @@ const NotesContainer = () => {
   //destructure
   const { notes } = data;
 
-  return (
-    <Wrapper>
-      <div className="jobs">
-        {notes.map((note) => {
-          return <Notes key={note._id} {...note} />;
-        })}
-      </div>
-    </Wrapper>
-  );
+  const notesDetails =
+    notes === null ? (
+      <Wrapper>
+        <p>No Notes yet</p>
+      </Wrapper>
+    ) : (
+      <Wrapper>
+        <div className="jobs">
+          {notes.map((note) => {
+            return <Notes key={note._id} {...note} />;
+          })}
+        </div>
+      </Wrapper>
+    );
+
+  return notesDetails;
 };
 export default NotesContainer;

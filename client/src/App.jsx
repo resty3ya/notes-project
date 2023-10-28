@@ -33,15 +33,15 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index: true,
+        index: "true",
+        element: <AllNotes />,
+        loader: allNotesLoader,
+      },
+      {
+        path: "add-note",
         element: <AddNote />,
         action: addNoteAction,
         loader: addNoteLoader,
-      },
-      {
-        path: "all-notes",
-        element: <AllNotes />,
-        loader: allNotesLoader,
       },
       {
         path: "edit-note/:id",
@@ -76,6 +76,10 @@ const router = createBrowserRouter([
         loader: allUsersLoader,
       },
     ],
+  },
+  {
+    path: "/error",
+    element: <Error />,
   },
 ]);
 

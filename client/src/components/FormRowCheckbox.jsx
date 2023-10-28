@@ -1,21 +1,25 @@
 import { useState } from "react";
 
-const FormRowCheckbox = ({ user }) => {
-  let [active, setActive] = useState(user.active);
+const FormRowCheckbox = ({ user, labelText, name }) => {
+  const { active } = user;
+
+  let [isChecked, setIsChecked] = useState(active);
+
+  const handleCheck = () => {
+    setIsChecked((prev) => !prev);
+  };
 
   return (
-    <>
-      <label htmlFor="active">
-        <input
-          type="checkbox"
-          name="active"
-          value={active}
-          onChange={() => {
-            setActive((active) => !active);
-          }}
-        />
-      </label>
-    </>
+    <div className="form-row">
+      <label htmlFor={name}>{labelText}</label>
+      <input
+        className="form-input"
+        type="checkbox"
+        name="active"
+        value={isChecked}
+        onChange={handleCheck}
+      />
+    </div>
   );
 };
 export default FormRowCheckbox;
