@@ -5,7 +5,6 @@ import { NOTE_STATUS } from "../../../../utils/constant";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAllNotesContext } from "./AllNotes";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();

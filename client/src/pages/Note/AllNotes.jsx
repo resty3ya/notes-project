@@ -3,14 +3,18 @@ import customFetch from "../../utils/customFetch";
 import { useContext, createContext } from "react";
 import NotesContainer from "../../components/NotesContainer";
 import { useLoaderData } from "react-router-dom";
+import AddNoteContainer from "../../components/AddNoteContainer";
 
 export const loader = async () => {
   try {
-    const { data } = await customFetch.get("/notes");
+    const [notes, user] = await Promise.all([
+      customFetch.get("/notes"),
+      customFetch.get("/users"),
+    ]);
 
     // const { userData } = await customFetch.get("/users");
     // console.log(data1.data, data2.data);
-    return { data };
+    return { notes, user };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
@@ -19,13 +23,16 @@ export const loader = async () => {
 
 const AllNotesContext = createContext();
 const AllNotes = () => {
-  const { data } = useLoaderData();
+  const { notes, user } = useLoaderData();
 
   //destructure
+  console.log("THIS IS FROM ALL NOTES", notes);
+  console.log("THIS IS FROM ALL NOTES", user);
   //
 
   return (
-    <AllNotesContext.Provider value={{ data }}>
+    <AllNotesContext.Provider value={{ notes, user }}>
+      <AddNoteContainer />
       <NotesContainer />
     </AllNotesContext.Provider>
   );

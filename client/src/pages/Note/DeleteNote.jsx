@@ -9,7 +9,7 @@ export const action = async ({ params }) => {
   } catch (error) {
     toast.error(error?.response?.data?.msg);
   }
-  return redirect("/all-notes");
+  return redirect("/");
 };
 
 const DeleteNote = () => {

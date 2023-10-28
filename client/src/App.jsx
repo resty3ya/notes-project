@@ -3,8 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   HomeLayout,
   AddUser,
-  AddNote,
+  // AddNote,
   AllNotes,
+  CreateNote,
   AllUsers,
   EditNote,
   DeleteNote,
@@ -20,11 +21,12 @@ import { action as addUserAction } from "./pages/User/AddUser";
 import { loader as editUserLoader } from "./pages/User/EditUser";
 import { action as editUserAction } from "./pages/User/EditUser";
 import { action as deleteUserAction } from "./pages/User/DeleteUser";
-import { action as addNoteAction } from "./pages/Note/AddNote";
-import { loader as addNoteLoader } from "./pages/Note/AddNote";
+// import { action as addNoteAction } from "./pages/Note/AddNote";
+// import { loader as addNoteLoader } from "./pages/Note/AddNote";
 import { loader as editNoteLoader } from "./pages/Note/EditNote";
 import { action as editNoteAction } from "./pages/Note/EditNote";
 import { action as deleteNoteAction } from "./pages/Note/DeleteNote";
+import { action as createNoteAction } from "./pages/Note/CreateNote";
 
 const router = createBrowserRouter([
   {
@@ -36,12 +38,13 @@ const router = createBrowserRouter([
         index: "true",
         element: <AllNotes />,
         loader: allNotesLoader,
-      },
-      {
-        path: "add-note",
-        element: <AddNote />,
-        action: addNoteAction,
-        loader: addNoteLoader,
+        children: [
+          {
+            index: "true",
+            element: <CreateNote />,
+            action: createNoteAction,
+          },
+        ],
       },
       {
         path: "edit-note/:id",

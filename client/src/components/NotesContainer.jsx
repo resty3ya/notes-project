@@ -3,10 +3,13 @@ import { useAllNotesContext } from "../pages/Note/AllNotes";
 import Wrapper from "../assets/wrappers/JobsContainer";
 
 const NotesContainer = () => {
-  const { data } = useAllNotesContext();
+  const { notes, user } = useAllNotesContext();
 
   //destructure
-  const { notes } = data;
+  // const { notes } = data; //OLD
+  const { data: notesData } = notes;
+
+  const notesDataForMapping = notesData.notes;
 
   const notesDetails =
     notes === null ? (
@@ -16,7 +19,7 @@ const NotesContainer = () => {
     ) : (
       <Wrapper>
         <div className="jobs">
-          {notes.map((note) => {
+          {notesDataForMapping.map((note) => {
             return <Notes key={note._id} {...note} />;
           })}
         </div>

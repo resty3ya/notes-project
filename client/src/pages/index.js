@@ -8,3 +8,4 @@ export { default as EditUser } from "./User/EditUser";
 export { default as HomeLayout } from "./HomeLayout";
 export { default as DeleteNote } from "./Note/DeleteNote";
 export { default as DeleteUser } from "./User/DeleteUser";
+export { default as CreateNote } from "./Note/CreateNote";

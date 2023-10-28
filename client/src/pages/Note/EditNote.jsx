@@ -60,13 +60,15 @@ const EditNote = () => {
 
   const onUserChanged = () => setSelectNotesUser((prev) => !prev);
 
-  const options = usersDataForMapping.map((user) => {
-    return (
-      <option key={user._id} value={user._id}>
-        {user.username}
-      </option>
-    );
-  });
+  const options = usersDataForMapping
+    .filter((user) => user.active === true)
+    .map((user) => {
+      return (
+        <option key={user._id} value={user._id}>
+          {user.username}
+        </option>
+      );
+    });
 
   return (
     <Wrapper>
