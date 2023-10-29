@@ -4,7 +4,8 @@ import { FormRow, FormRowSelect } from "../../components";
 import { NOTE_STATUS } from "../../../../utils/constant";
 import { Form, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useState, useEffect } from "react";
+
+// import { useState } from "react";
 
 export const action = async ({ request }) => {
   const formData = await request.formData();
@@ -21,35 +22,45 @@ export const action = async ({ request }) => {
 };
 
 const CreateNote = ({ usersData }) => {
-  const [name, setName] = useState(" ");
-  const [title, setTitle] = useState(" ");
-  const [text, setText] = useState(" ");
-
   const userDataForMapping = usersData.user;
 
-  const handleUserChange = (event) => {
-    setName(event.target.value);
-  };
+  // const [formState, setFormState] = useState({
+  //   user: userDataForMapping[0]._id,
+  //   title: "",
+  //   text: "",
+  //   noteStatus: NOTE_STATUS.PENDING,
+  // });
 
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormState({ ...formState, [name]: value });
+  // };
 
-  const handleTextChange = (event) => {
-    setText(event.target.value);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-  const handleSubmit = () => {
-    setName(" ");
-    setTitle(" ");
-    setText(" ");
-  };
+  //   setFormState({
+  //     user: userDataForMapping[0]._id,
+  //     title: "",
+  //     text: "",
+  //     noteStatus: NOTE_STATUS.PENDING,
+  //   });
+  // };
+  // function refreshPage() {
+  //   window.location.reload(false);
+  // }
 
   return (
     <Wrapper>
       <Form method="post" className="form">
         <label htmlFor="user">Select User:</label>
-        <select id="user" name="user" className="btn btn-block">
+        <select
+          id="user"
+          name="user"
+          className="btn btn-block"
+          // value={formState.user}
+          // onChange={handleInputChange}
+        >
           {userDataForMapping
             .filter((user) => user.active === true)
             .map((user) => {
@@ -60,17 +71,26 @@ const CreateNote = ({ usersData }) => {
               );
             })}
         </select>
-        <FormRow type="text" name="title" onChange={handleTitleChange} />
-        <FormRow type="text" name="text" onChange={handleTextChange} />
+        <FormRow
+          type="text"
+          name="title"
+          // value={formState.title}
+          // onChange={handleInputChange}
+        />
+        <FormRow
+          type="text"
+          name="text"
+          // value={formState.text}
+          // onChange={handleInputChange}
+        />
         <FormRowSelect
           labelText="note status"
           name="noteStatus"
-          defaultValue={NOTE_STATUS.PENDING}
+          defaultValue={userDataForMapping.noteStatus}
+          // onChange={handleInputChange}
           list={Object.values(NOTE_STATUS)}
         />
-        <button type="submit" onClick={handleSubmit}>
-          submit
-        </button>
+        <button type="submit">submit</button>
       </Form>
     </Wrapper>
   );
