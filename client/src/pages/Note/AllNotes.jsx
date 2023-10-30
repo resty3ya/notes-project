@@ -3,7 +3,7 @@ import customFetch from "../../utils/customFetch";
 import { useContext, createContext } from "react";
 import NotesContainer from "../../components/NotesContainer";
 import { useLoaderData } from "react-router-dom";
-import AddNoteContainer from "../../components/AddNoteContainer";
+import { AddNoteContainer } from "../../components";
 
 export const loader = async () => {
   try {
@@ -25,9 +25,8 @@ const AllNotesContext = createContext();
 const AllNotes = () => {
   const { notes, user } = useLoaderData();
 
-  //destructure
-  console.log("THIS IS FROM ALL NOTES", notes);
-  console.log("THIS IS FROM ALL NOTES", user);
+  // console.log("THIS IS FROM ALL NOTES", notes);
+  // console.log("THIS IS FROM ALL NOTES", user);
   //
 
   return (

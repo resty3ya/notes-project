@@ -2,11 +2,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   HomeLayout,
-  AddUser,
+  // AddUser,
   // AddNote,
   AllNotes,
   CreateNote,
   AllUsers,
+  CreateUser,
   EditNote,
   DeleteNote,
   EditUser,
@@ -17,7 +18,7 @@ import {
 // import { action as addNoteAction } from "./pages/AddNote";
 import { loader as allNotesLoader } from "./pages/Note/AllNotes";
 import { loader as allUsersLoader } from "./pages/User/AllUsers";
-import { action as addUserAction } from "./pages/User/AddUser";
+// import { action as addUserAction } from "./pages/User/AddUser";
 import { loader as editUserLoader } from "./pages/User/EditUser";
 import { action as editUserAction } from "./pages/User/EditUser";
 import { action as deleteUserAction } from "./pages/User/DeleteUser";
@@ -27,6 +28,7 @@ import { loader as editNoteLoader } from "./pages/Note/EditNote";
 import { action as editNoteAction } from "./pages/Note/EditNote";
 import { action as deleteNoteAction } from "./pages/Note/DeleteNote";
 import { action as createNoteAction } from "./pages/Note/CreateNote";
+import { action as createUserAction } from "./pages/User/CreateUser";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,18 @@ const router = createBrowserRouter([
         ],
       },
       {
+        path: "all-users",
+        element: <AllUsers />,
+        loader: allUsersLoader,
+        children: [
+          {
+            index: "true",
+            element: <CreateUser />,
+            action: createUserAction,
+          },
+        ],
+      },
+      {
         path: "edit-note/:id",
         element: <EditNote />,
         loader: editNoteLoader,
@@ -57,11 +71,7 @@ const router = createBrowserRouter([
         element: <DeleteNote />,
         action: deleteNoteAction,
       },
-      {
-        path: "add-user",
-        element: <AddUser />,
-        action: addUserAction,
-      },
+
       {
         path: "edit-user/:id",
         element: <EditUser />,
@@ -72,11 +82,6 @@ const router = createBrowserRouter([
         path: "delete-user/:id",
         element: <DeleteUser />,
         action: deleteUserAction,
-      },
-      {
-        path: "all-users",
-        element: <AllUsers />,
-        loader: allUsersLoader,
       },
     ],
   },

@@ -1,4 +1,13 @@
+import Wrapper from "../assets/wrappers/JobsContainer";
+import CreateUser from "../pages/User/CreateUser";
+
 const AddUserContainer = () => {
-  return <div>AddUserContainer</div>;
+  return (
+    <Wrapper>
+      <div className="jobs">
+        <CreateUser />
+      </div>
+    </Wrapper>
+  );
 };
 export default AddUserContainer;

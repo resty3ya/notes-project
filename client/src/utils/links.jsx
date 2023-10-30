@@ -7,10 +7,10 @@ const links = [
   //   text: "add note",
   //   path: "add-note",
   // },
-  {
-    text: "add user",
-    path: "add-user",
-  },
+  // {
+  //   text: "add user",
+  //   path: "add-user",
+  // },
   {
     text: "all users",
     path: "all-users",

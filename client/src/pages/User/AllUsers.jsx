@@ -3,6 +3,7 @@ import { UsersContainer } from "../../components";
 import customFetch from "../../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
 import { useContext, createContext } from "react";
+import { AddUserContainer } from "../../components";
 
 export const loader = async () => {
   try {
@@ -24,6 +25,7 @@ const AllUsers = () => {
 
   return (
     <AllUsersContext.Provider value={{ user }}>
+      <AddUserContainer />
       <UsersContainer />
     </AllUsersContext.Provider>
   );
