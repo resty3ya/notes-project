@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-// app.get("/", (req, res) => res.send("Hello World"));
+app.get("/", (req, res) => res.send("Hello World"));
 
 // app.post("/", (req, res) => {
 //   res.json({ msg: "data received", data: req.body });

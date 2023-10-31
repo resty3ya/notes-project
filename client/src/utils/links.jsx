@@ -3,6 +3,10 @@ const links = [
     text: "all notes",
     path: ".",
   },
+  {
+    text: "all users",
+    path: "all-users",
+  },
   // {
   //   text: "add note",
   //   path: "add-note",
@@ -11,10 +15,6 @@ const links = [
   //   text: "add user",
   //   path: "add-user",
   // },
-  {
-    text: "all users",
-    path: "all-users",
-  },
 ];
 
 export default links;

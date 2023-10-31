@@ -3,7 +3,7 @@ import { useAllNotesContext } from "../pages/Note/AllNotes";
 import Wrapper from "../assets/wrappers/JobsContainer";
 
 const NotesContainer = () => {
-  const { notes, user } = useAllNotesContext();
+  const { notes } = useAllNotesContext();
 
   //destructure
   // const { notes } = data; //OLD

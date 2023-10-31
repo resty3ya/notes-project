@@ -2,8 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
   HomeLayout,
-  // AddUser,
-  // AddNote,
   AllNotes,
   CreateNote,
   AllUsers,
@@ -15,20 +13,16 @@ import {
   Error,
 } from "./pages";
 
-// import { action as addNoteAction } from "./pages/AddNote";
+import { action as createUserAction } from "./pages/User/CreateUser";
 import { loader as allNotesLoader } from "./pages/Note/AllNotes";
 import { loader as allUsersLoader } from "./pages/User/AllUsers";
-// import { action as addUserAction } from "./pages/User/AddUser";
 import { loader as editUserLoader } from "./pages/User/EditUser";
 import { action as editUserAction } from "./pages/User/EditUser";
 import { action as deleteUserAction } from "./pages/User/DeleteUser";
-// import { action as addNoteAction } from "./pages/Note/AddNote";
-// import { loader as addNoteLoader } from "./pages/Note/AddNote";
 import { loader as editNoteLoader } from "./pages/Note/EditNote";
 import { action as editNoteAction } from "./pages/Note/EditNote";
 import { action as deleteNoteAction } from "./pages/Note/DeleteNote";
 import { action as createNoteAction } from "./pages/Note/CreateNote";
-import { action as createUserAction } from "./pages/User/CreateUser";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +48,9 @@ const router = createBrowserRouter([
         loader: allUsersLoader,
         children: [
           {
-            index: "true",
+            // I'm getting ERROR here, actually no error hindi lang mag route sa all-users if i use index:"/" that is why
+            // I use this path with the following /all-users/
+            path: "/all-users/",
             element: <CreateUser />,
             action: createUserAction,
           },
