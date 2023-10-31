@@ -12,7 +12,7 @@ const AddNoteContainer = () => {
   return (
     <Wrapper>
       <div className="jobs">
-        <CreateNote usersData={usersData} />;
+        <CreateNote usersData={usersData} />
       </div>
     </Wrapper>
   );
